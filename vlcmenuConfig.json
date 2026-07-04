@@ -1,0 +1,98 @@
+{
+  "_metadata": {
+    "project": "VLC Menu",
+    "version": "3.21",
+    "lastUpdated": "2026-07-04",
+    "description": "VLC profile selector configuration (also holds organizeMedia + mediaOptimize settings for the [A] Admin menu). This is a sanitized sample — replace the placeholder drives, folders, and password with your own.",
+    "notes": "Add 'hidden': true to hide a profile from the menu. Add 'id': 1001 for a custom shortcut number. Run with --port 8081 to control a second VLC instance. Add 'EXTRA_PATHS': [\"/abs/path/folder\"] to include folders outside FOLDER_ROOT. basePath1/2/3 scan ALL subfolders in the Move picker. folderRoot1/2 + folderNameArray1/2 include only named subfolders in the Move picker.",
+    "folders": ""
+  },
+  "paths": {
+    "basePath": "/Volumes/YOUR_DRIVE/video",
+    "basePath1": "/Volumes/YOUR_DRIVE/video",
+    "basePath2": "",
+    "basePath3": "",
+    "folderRoot1": "",
+    "folderNameArray1": [],
+    "folderRoot2": "",
+    "folderNameArray2": [],
+    "playlistFolder": "/Volumes/YOUR_DRIVE/video/playlist",
+    "savedPath": "/Volumes/YOUR_DRIVE/video/saved",
+    "vlcPath": "/Applications/VLC.app/Contents/MacOS/VLC"
+  },
+  "managementMode": {
+    "resizeTerminal": true,
+    "terminalWidth": 800,
+    "terminalHeight": 400,
+    "moveWindow": false
+  },
+  "httpInterface": {
+    "port": 8080,
+    "password": "YOUR_VLC_PASSWORD",
+    "host": "localhost"
+  },
+  "folderShortList": [
+    "action", "comedy", "drama", "documentary", "music", "nature", "sports", "favorites"
+  ],
+  "profiles": [
+    {
+      "title": "Folder: Import",
+      "FOLDER_ROOT": "/Volumes/YOUR_DRIVE/video/",
+      "FOLDER_NAME_ARRAY": ["import"],
+      "PLAYLIST_NAME": "import.xspf"
+    },
+    {
+      "title": "All Videos",
+      "FOLDER_ROOT": "/Volumes/YOUR_DRIVE/video/",
+      "FOLDER_NAME_ARRAY": ["action", "comedy", "drama", "documentary", "favorites"],
+      "PLAYLIST_NAME": "all.xspf"
+    },
+    {
+      "title": "Favorites",
+      "FOLDER_ROOT": "/Volumes/YOUR_DRIVE/video/",
+      "FOLDER_NAME_ARRAY": ["favorites"],
+      "PLAYLIST_NAME": "favorites.xspf"
+    },
+    {
+      "title": "Documentary",
+      "FOLDER_ROOT": "/Volumes/YOUR_DRIVE/video/",
+      "FOLDER_NAME_ARRAY": ["documentary", "nature"],
+      "PLAYLIST_NAME": "documentary.xspf"
+    }
+  ],
+  "organizeMedia": {
+    "_comment": "Settings for the [A] Admin → Media File Organizer screens. targetDirectories supports up to 5 paths; first-match-wins for existing subfolders.",
+    "sourceDirectory": "/Volumes/YOUR_DRIVE/video",
+    "targetDirectories": [
+      "/Volumes/YOUR_DRIVE/video"
+    ],
+    "uncategorizedFolder": "uncategorized",
+    "deletedFolder": "trash",
+    "prioritySubfolder": "import",
+    "reportFolder": "~/Desktop",
+    "logFile": "~/Documents/log/organizeMedia.log",
+    "cacheFile": "~/Documents/script/organizeMedia/fileCache.json",
+    "extensions": [".mp4", ".mov", ".avi", ".mkv", ".wmv", ".flv", ".webm", ".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg", ".webp", ".tiff"],
+    "categoryMatching": [
+      {"folder": "action",      "keywords": ["action", "adventure"], "priority": 1},
+      {"folder": "comedy",      "keywords": ["comedy", "funny"],      "priority": 2},
+      {"folder": "drama",       "keywords": ["drama"],                "priority": 3},
+      {"folder": "documentary", "keywords": ["documentary", "docu"],  "priority": 4},
+      {"folder": "nature",      "keywords": ["nature", "wildlife"],   "priority": 5},
+      {"folder": "music",       "keywords": ["music", "concert"],     "priority": 6}
+    ]
+  },
+  "mediaOptimize": {
+    "_comment": "Profiles for the [A] Admin → [M] Media Optimize screens. Converts non-MP4 video files to MP4 using ffmpeg.",
+    "logFile": "~/Documents/log/mediaOptimize.log",
+    "profiles": [
+      {
+        "name": "Sample Media Library",
+        "directories": ["/Volumes/YOUR_DRIVE/video"],
+        "outputDirectory": null,
+        "deleteMode": "after_each",
+        "extensions": [".mov", ".avi", ".mkv", ".wmv", ".flv", ".m4v", ".mpeg", ".mpg", ".3gp", ".webm", ".ts", ".mts", ".m2ts", ".vob", ".asf", ".rm", ".rmvb", ".dv"]
+      }
+    ]
+  }
+}
